@@ -42,13 +42,27 @@ while running:
             continue
 
         player.reduce_mp(spell.cost)
-        enemy.take_damage(magic_dmg)
-        print(bcolors.OKBLUE + "\n" + spell.name + " deals", str(player.get_hp()), "points of damage" + bcolors.ENDC)
+
+        if "white" == spell.type:
+            player.heal(magic_dmg)
+            print(bcolors.OKBLUE + "\n" + spell.name + "heals for", str(magic_dmg), "HP." + bcolors.ENDC)
+        elif spell.type == "black":
+            enemy.take_damage(magic_dmg)
+            print(bcolors.OKBLUE + "\n" + spell.name + "deals ," + str(magic_dmg), "points of damage" + bcolors.ENDC)
+
+    enemy_choice = 1
+
+    enemy_dmg = enemy.generate_damage()
+    player.take_damage(enemy_dmg)
+    print("Enemy attacks for", enemy_dmg)
+
+    print("---------------------------------")
+    print("Enemy HP:", bcolors.FAIL + str(enemy.get_hp()) + "/" + str(enemy.get_max_hp()) + bcolors.ENDC)
+    print("Your HP:", bcolors.OKGREEN + str(player.get_hp()) + "/" + str(player.get_max_hp()) + bcolors.ENDC)
+    print("Your MP:", bcolors.OKBLUE + str(player.get_mp()) + "/" + str(player.get_max_mp()) + bcolors.ENDC)
 
     if enemy.get_hp() == 0:
         print(bcolors.OKGREEN + "You win!" + bcolors.ENDC)
-
-        running = False
     elif player.get_hp() == 0:
-        print(bcolors.FAIL + "Enemy has defeated you" + bcolors.ENDC)
+        print(bcolors.FAIL + "Your enemy has defeated you!" + bcolors.ENDC)
         running = False

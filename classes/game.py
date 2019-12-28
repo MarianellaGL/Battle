@@ -54,8 +54,8 @@ class Person:
     def get_max_mp(self):
         return self.maxmp
 
-    def reduce_mp(self,cost):
-        self.mp-= cost
+    def reduce_mp(self, cost):
+        self.mp -= cost
 
     def choose_action(self):
         i = 1
@@ -65,8 +65,8 @@ class Person:
             i += 1
 
     def choose_magic(self):
-        i =1
+        i = 1
         print("Magic")
         for spell in self.magic:
-            print(str(i)+ ":", spell.name, "(cost", str(spell.cost) + ")")
+            print(str(i) + ":", spell.name, "(cost", str(spell.cost) + ")")
             i += 1
