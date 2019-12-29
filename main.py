@@ -66,10 +66,8 @@ while running:
 
                 enemies[enemy].take_damage(dmg)
 
-                print("You attacked for " + enemies[enemy].name + " for" + str(dmg) + " pts of damage")
-                if enemies[enemy].get_hp() == 0:
-                    print(enemies[enemy].name + "has died")
-                    del enemies[enemy]
+                print("You attacked " + enemies[enemy].name + "for " + str(dmg) + " pts of damage")
+
             elif index == 1:
                 player.choose_magic()
                 magic_choice = int(input("Choice magic:")) - 1
@@ -97,8 +95,8 @@ while running:
 
                     enemies[enemy].take_damage(magic_dmg)
 
-                    print(bcolors.OKBLUE + "\n" + spell.name + "deals " + str(magic_dmg),
-                          "points of damage to " + enemies[enemy].name + bcolors.ENDC)
+                    print(bcolors.OKBLUE + "\n" + spell.name + " deals " + str(magic_dmg),
+                          " points of damage to " + enemies[enemy].name + bcolors.ENDC)
 
             elif index == 2:
                 player.choose_item()
@@ -117,7 +115,7 @@ while running:
 
                 if item.type == "potion":
                     player.heal(item.prop)
-                    print(bcolors.OKGREEN + "\n" + item.name + "heals for: ", str(item.prop), "HP" + bcolors.ENDC)
+                    print(bcolors.OKGREEN + "\n" + item.name + " heals for: ", str(item.prop), "HP" + bcolors.ENDC)
                 elif item.type == "elixer":
 
                     if item.name == "MegaElixer":
@@ -133,9 +131,9 @@ while running:
                     enemies[enemy].take_damage(item.prop)
 
                     print(bcolors.FAIL + "\n" + item.name + "deals for: ", str(item.prop),
-                          "points of damage to " + enemies[enemy].name + bcolors.ENDC)
+                          " points of damage to " + enemies[enemy].name + bcolors.ENDC)
                     if enemies[enemy].get_hp() == 0:
-                        print(enemies[enemy].name + "has died")
+                        print(enemies[enemy].name + " has died")
                         del enemies[enemy]
 
     defeated_enemies = 0
